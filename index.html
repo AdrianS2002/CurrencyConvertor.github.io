@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Convertor</title>
+    <link rel="icon" href="exchange-rate.png" type="png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="currencyConvertor">
+       <div id="title">
+        <img src="exchange-rate.png" alt="img">
+
+           <h1>Currency Convertor</h1>
+           
+       </div>
+
+       <form id="convert">
+            <div>
+                <label for="amount">Amount:</label><br>
+                <input type="number" id="amount" placeholder="Enter Amount">
+            </div>
+            <div>
+                <label for="from">From:</label><br>
+                <img src="https://flagsapi.com/US/flat/64.png" />
+                <select id="from"></select>
+            </div>
+            <div>
+                <label for="to">To:</label><br>
+                <img src="https://flagsapi.com/RO/flat/64.png" />
+                <select id="to"></select>
+            </div>
+            <button>Convert</button>
+       </form>
+       <div id="convertResult">
+          <input id="result" type="text" readonly>
+       </div>
+    </div>
+    <script src="country_list.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
