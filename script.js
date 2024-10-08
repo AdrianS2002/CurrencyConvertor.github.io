@@ -2,7 +2,8 @@ const dropList = document.querySelectorAll("form select"),
 fromCurrency = document.getElementById('from'),
 toCurrency = document.getElementById('to'),
 getButton = document.querySelector("form button");
-
+let errorMessage = document.createElement('p');
+errorMessage.style.color='red';
 
 for (let i = 0; i < dropList.length; i++) {
     for(let currency_code in country_list){
@@ -31,19 +32,23 @@ window.addEventListener("load", ()=>{
 });
 
 getButton.addEventListener("click", e =>{
+
     e.preventDefault();
     getExchangeRate();
 });
 
 function getExchangeRate(){
-    const amount = document.getElementById("amount");
     const exchangeRateTxt = document.querySelector("#result");
     let amountVal = amount.value;
 
-    if(amountVal == "" || amountVal == "0"){
-        amount.value = "1";
-        amountVal = 1;
+    if(amountVal == "" || amountVal == "0" || amountVal < 0){
+        errorMessage.innerText = "Please enter a valid amount";
+        amount.insertAdjacentElement("afterend", errorMessage);
+        exchangeRateTxt.value='';
+        return;
     }
+    
+    errorMessage.innerText = "";
     exchangeRateTxt.innerText = "Getting exchange rate...";
     let url = `https://v6.exchangerate-api.com/v6/9347f20e3dd5a74d4667b4ff/latest/${fromCurrency.value}`;
    
