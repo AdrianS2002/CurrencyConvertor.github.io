@@ -41,7 +41,11 @@ function getExchangeRate(){
     const exchangeRateTxt = document.querySelector("#result");
     let amountVal = amount.value;
 
-    if(amountVal == "" || amountVal == "0" || amountVal < 0){
+    if(amountVal == "")
+    {
+        amountVal=1;
+    }
+    if(amountVal == "0" || amountVal < 0){
         errorMessage.innerText = "Please enter a valid amount";
         amount.insertAdjacentElement("afterend", errorMessage);
         exchangeRateTxt.value='';
